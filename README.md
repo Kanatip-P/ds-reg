@@ -1,14 +1,5 @@
-# yolov4-deepsort
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zmeSTP3J5zu2d5fHgsQC06DyYEYJFXq1?usp=sharing)
+# yolov4-deepsort+reg
 
-Object tracking implemented with YOLOv4, DeepSort, and TensorFlow. YOLOv4 is a state of the art algorithm that uses deep convolutional neural networks to perform object detections. We can take the output of YOLOv4 feed these object detections into Deep SORT (Simple Online and Realtime Tracking with a Deep Association Metric) in order to create a highly accurate object tracker.
-
-## Demo of Object Tracker on Persons
-<p align="center"><img src="data/helpers/demo.gif"\></p>
-
-## Demo of Object Tracker on Cars
-<p align="center"><img src="data/helpers/cars.gif"\></p>
 
 ## Getting Started
 To get started, install the proper dependencies either via Anaconda or Pip. I recommend Anaconda route for people using a GPU as it configures CUDA toolkit version for you.
@@ -16,10 +7,6 @@ To get started, install the proper dependencies either via Anaconda or Pip. I re
 ### Conda (Recommended)
 
 ```bash
-# Tensorflow CPU
-conda env create -f conda-cpu.yml
-conda activate yolov4-cpu
-
 # Tensorflow GPU
 conda env create -f conda-gpu.yml
 conda activate yolov4-gpu
@@ -38,13 +25,12 @@ pip install -r requirements-gpu.txt
 Make sure to use CUDA Toolkit version 10.1 as it is the proper version for the TensorFlow version used in this repository.
 https://developer.nvidia.com/cuda-10.1-download-archive-update2
 
-## Downloading Official YOLOv4 Pre-trained Weights
-Our object tracker uses YOLOv4 to make the object detections, which deep sort then uses to track. There exists an official pre-trained YOLOv4 object detector model that is able to detect 80 classes. For easy demo purposes we will use the pre-trained weights for our tracker.
-Download pre-trained yolov4.weights file: https://drive.google.com/open?id=1cewMfusmPjYWbrnuJRuKhPMwRe_b9PaT
+## Downloading custom weight YOLOv4  
+Our tracker+reg uses YOLOv4 to make the object detections, which deep sort then uses to track. There an custom YOLOv4 object detector model that is able to detect 7 classes. Download custom yolov4.weights file: https://drive.google.com/file/d/18_F3klAmeOOf5AoVPhU-dqUpb1L7MlvV/view?usp=sharing
 
-Copy and paste yolov4.weights from your downloads folder into the 'data' folder of this repository.
+Copy and paste checkpoints folder from your downloads folder into the folder of this repository.
 
-If you want to use yolov4-tiny.weights, a smaller model that is faster at running detections but less accurate, download file here: https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights
+
 
 ## Running the Tracker with YOLOv4
 To implement the object tracking using YOLOv4, first we convert the .weights into the corresponding TensorFlow model which will be saved to a checkpoints folder. Then all we need to do is run the object_tracker.py script to run our object tracker with YOLOv4, DeepSort and TensorFlow.
@@ -62,15 +48,6 @@ The output flag allows you to save the resulting video of the object tracker run
 
 If you want to run yolov3 set the model flag to ``--model yolov3``, upload the yolov3.weights to the 'data' folder and adjust the weights flag in above commands. (see all the available command line flags and descriptions of them in a below section)
 
-## Running the Tracker with YOLOv4-Tiny
-The following commands will allow you to run yolov4-tiny model. Yolov4-tiny allows you to obtain a higher speed (FPS) for the tracker at a slight cost to accuracy. Make sure that you have downloaded the tiny weights file and added it to the 'data' folder in order for commands to work!
-```
-# save yolov4-tiny model
-python save_model.py --weights ./data/yolov4-tiny.weights --output ./checkpoints/yolov4-tiny-416 --model yolov4 --tiny
-
-# Run yolov4-tiny object tracker
-python object_tracker.py --weights ./checkpoints/yolov4-tiny-416 --model yolov4 --video ./data/video/test.mp4 --output ./outputs/tiny.avi --tiny
-```
 
 ## Resulting Video
 As mentioned above, the resulting video will save to wherever you set the ``--output`` command line flag path to. I always set it to save to the 'outputs' folder. You can also change the type of video saved by adjusting the ``--output_format`` flag, by default it is set to AVI codec which is XVID.
@@ -138,6 +115,7 @@ save_model.py:
 
 ### References  
 
-   Huge shoutout goes to hunglc007 and nwojke for creating the backbones of this repository:
+   Huge shoutout goes to the AIGuysCode,hunglc007 and nwojke for creating the backbones of this repository:
+  * [yolov4-deepsort](https://github.com/theAIGuysCode/yolov4-deepsort)
   * [tensorflow-yolov4-tflite](https://github.com/hunglc007/tensorflow-yolov4-tflite)
   * [Deep SORT Repository](https://github.com/nwojke/deep_sort)

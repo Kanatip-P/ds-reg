@@ -23,6 +23,7 @@ from deep_sort import preprocessing, nn_matching
 from deep_sort.detection import Detection
 from deep_sort.tracker import Tracker
 from tools import generate_detections as gdet
+import statistics
 flags.DEFINE_string('framework', 'tf', '(tf, tflite, trt')
 flags.DEFINE_string('weights', './checkpoints/yolov4-416',
                     'path to weights file')
@@ -68,6 +69,7 @@ def contains_duplicates(X):
 
 
 def main(_argv):
+    avg=[]
     # Definition of the parameters
     max_cosine_distance = 0.4
     nn_budget = None
@@ -300,6 +302,9 @@ def main(_argv):
         # calculate frames per second of running detections
         fps = 1.0 / (time.time() - start_time)
         print("FPS: %.2f" % fps)
+        avg.append(fps)
+        print("avg fps {}".format(statistics.mean(avg)))
+        cv2.putText(frame, "fps: {}".format(fps), (50, 500), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (66, 245, 141), 2)
         result = np.asarray(frame)
         result = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 

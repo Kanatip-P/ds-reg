@@ -75,7 +75,7 @@ def main(_argv):
     nn_budget = None
     nms_max_overlap = 1.0
     #regression model load
-    weight_path='./2_input_model_3-6%/'
+    weight_path='./2_input_model_2-3.5%/'
     loaded_model = tf.keras.models.load_model(weight_path)
 
     # initialize deep sort

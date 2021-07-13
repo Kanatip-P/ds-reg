@@ -27,7 +27,8 @@ https://developer.nvidia.com/cuda-10.1-download-archive-update2
 
 ## Downloading custom weight YOLOv4  and dataset
 Our tracker+reg uses YOLOv4 to make the object detections, which deep sort then uses to track. There an custom YOLOv4 object detector model that is able to detect 7 classes.
-And we provide many format for training object detection 
+And we provide many format for training object detection
+
 Download custom yolov4.weights file: https://drive.google.com/file/d/18_F3klAmeOOf5AoVPhU-dqUpb1L7MlvV/view?usp=sharing
 
 Download our custom dataset file: https://drive.google.com/drive/folders/1JrFI5s6hfft5sjdN_LkBFZ7P-THdB4S-?usp=sharing

@@ -31,6 +31,7 @@ And we provide many format for training object detection
 Download custom yolov4.weights file: https://drive.google.com/file/d/18_F3klAmeOOf5AoVPhU-dqUpb1L7MlvV/view?usp=sharing
 
 Download our custom dataset file: https://drive.google.com/drive/folders/1JrFI5s6hfft5sjdN_LkBFZ7P-THdB4S-?usp=sharing
+
 Copy and paste checkpoints folder from your downloads folder into the folder of this repository.
 
 

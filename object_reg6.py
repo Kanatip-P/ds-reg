@@ -292,27 +292,27 @@ def main(_argv):
                                 C1_x=boxs[0][0]+(boxs[0][2]/2)
                                 C1_y=boxs[0][1]+(boxs[0][3]/2)
                                 C2_x=bboxes[1][0]+(bboxes[1][2]/2)
-                                C2_y=bboxes[1][1]+(bboxes[1][3]]/2)
-                                Dx = (C2_x - C1_x);
-    	                        Dy = (C2_y - C1_y);
+                                C2_y=bboxes[1][1]+(bboxes[1][3]/2)
+                                Dx = (C2_x - C1_x)
+                                Dy = (C2_y - C1_y)
                             #The two rectangles do not intersect, and there are two rectangles partially overlapping in the X-axis direction. The minimum distance is the distance between the lower line of the upper rectangle and the upper line of the lower rectangle
-                                if((Dx < ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) && (Dy >= ((int(boxs[0][1]+boxs[0][3]) + rint(bboxes[1][1]+bboxes[1][3])) / 2))):
-                                    min_dist = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2);
+                                if((Dx < ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) and (Dy >= ((int(boxs[0][1]+boxs[0][3]) + rint(bboxes[1][1]+bboxes[1][3])) / 2))):
+                                    min_dist = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2)
 
                         	 #The two rectangles do not intersect. There are two partially overlapping rectangles in the Y-axis direction. The minimum distance is the distance between the right line of the left rectangle and the left line of the right rectangle
-                                elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) && (Dy < ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
-                                    min_dist = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2);
+                                elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) and (Dy < ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
+                                    min_dist = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)
 
 
                         	 #Two rectangles do not intersect, two rectangles that do not overlap in the X-axis and Y-axis directions, the minimum distance is the distance between the two closest vertices,
                         	 # Using the Pythagorean theorem, it is easy to calculate this distance
-                                elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) && (Dy >= ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
-                                    int delta_x = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2);
-                                    int delta_y = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3]))/ 2);
-                                    min_dist = sqrt(delta_x * delta_x  + delta_y * delta_y);
+                                elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) and (Dy >= ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
+                                    delta_x = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)
+                                    delta_y = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3]))/ 2)
+                                    min_dist = sqrt(delta_x * delta_x  + delta_y * delta_y)
                         	 #The intersection of two rectangles, the minimum distance is negative, return -1
                                 else:
-                        		          min_dist = -1;
+                        		          min_dist = -1
                                 if(classes[1]=='mat'):
                                     if((min_dist/Dy)<3):
                                         predictions = loaded_model.predict(reg_input)
@@ -356,55 +356,55 @@ def main(_argv):
                                 C2_x=bboxes[1][0]+(bboxes[1][2]/2)
                                 C2_y=bboxes[1][1]+(bboxes[1][3]/2)
                                 Dx = (C2_x - C1_x)
-    	                        Dy = (C2_y - C1_y)
+                                Dy = (C2_y - C1_y)
                                 #The two rectangles do not intersect, and there are two rectangles partially overlapping in the X-axis direction. The minimum distance is the distance between the lower line of the upper rectangle and the upper line of the lower rectangle
-                                    if((Dx < ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) && (Dy >= ((int(boxs[0][1]+boxs[0][3]) + rint(bboxes[1][1]+bboxes[1][3])) / 2))):
-                                        min_dist = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2)
+                                if((Dx < ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) and (Dy >= ((int(boxs[0][1]+boxs[0][3]) + rint(bboxes[1][1]+bboxes[1][3])) / 2))):
+                                    min_dist = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2)
 
                             	 #The two rectangles do not intersect. There are two partially overlapping rectangles in the Y-axis direction. The minimum distance is the distance between the right line of the left rectangle and the left line of the right rectangle
-                                    elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) && (Dy < ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
-                                        min_dist = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)
+                                elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) and (Dy < ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
+                                    min_dist = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)
 
 
                             	 #Two rectangles do not intersect, two rectangles that do not overlap in the X-axis and Y-axis directions, the minimum distance is the distance between the two closest vertices,
                             	 # Using the Pythagorean theorem, it is easy to calculate this distance
-                                    elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) && (Dy >= ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
-                                        int delta_x = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)
-                                        int delta_y = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3]))/ 2)
-                                        min_dist = sqrt(delta_x * delta_x  + delta_y * delta_y)
+                                elif((Dx >= ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)) and (Dy >= ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3])) / 2))):
+                                    delta_x = Dx - ((int(boxs[0][0]+boxs[0][2]) + int(bboxes[1][0]+bboxes[1][2]))/ 2)
+                                    delta_y = Dy - ((int(boxs[0][1]+boxs[0][3]) + int(bboxes[1][1]+bboxes[1][3]))/ 2)
+                                    min_dist = sqrt(delta_x * delta_x  + delta_y * delta_y)
                             	 #The intersection of two rectangles, the minimum distance is negative, return -1
+                                else:
+                                    min_dist = -1
+                                if(classes[0]=='mat'):
+                                    if((min_dist/Dy)<3):
+                                        predictions = loaded_model.predict(reg_input)
+                                        a1_pred = predictions[0]
+                                        b1_pred = predictions[1]
+                                        c1_pred = predictions[2]
+                                        d1_pred = predictions[3]
+                                        xmin,xmax,ymin,ymax=convert(width,height,a1_pred,b1_pred,c1_pred,d1_pred)
+                                        start_point = (xmin, ymin)
+                                        end_point = (xmax, ymax)
+                                        rect1=xmax-xmin
+                                        rect2=ymax-ymin
+                                        check_rect=rect2/rect1
                                     else:
-                            		          min_dist = -1
-                                    if(classes[0]=='mat'):
-                                        if((min_dist/Dy)<3):
-                                            predictions = loaded_model.predict(reg_input)
-                                            a1_pred = predictions[0]
-                                            b1_pred = predictions[1]
-                                            c1_pred = predictions[2]
-                                            d1_pred = predictions[3]
-                                            xmin,xmax,ymin,ymax=convert(width,height,a1_pred,b1_pred,c1_pred,d1_pred)
-                                            start_point = (xmin, ymin)
-                                            end_point = (xmax, ymax)
-                                            rect1=xmax-xmin
-                                            rect2=ymax-ymin
-                                            check_rect=rect2/rect1
-                                        else:
-                                            print("not predict")
-                                    elif(classes[0]=='sensor'):
-                                        if((min_dist/Dx)<3):
-                                            predictions = loaded_model.predict(reg_input)
-                                            a1_pred = predictions[0]
-                                            b1_pred = predictions[1]
-                                            c1_pred = predictions[2]
-                                            d1_pred = predictions[3]
-                                            xmin,xmax,ymin,ymax=convert(width,height,a1_pred,b1_pred,c1_pred,d1_pred)
-                                            start_point = (xmin, ymin)
-                                            end_point = (xmax, ymax)
-                                            rect1=xmax-xmin
-                                            rect2=ymax-ymin
-                                            check_rect=rect2/rect1
-                                        else:
-                                            print("not predict")
+                                        print("not predict")
+                                elif(classes[0]=='sensor'):
+                                    if((min_dist/Dx)<3):
+                                        predictions = loaded_model.predict(reg_input)
+                                        a1_pred = predictions[0]
+                                        b1_pred = predictions[1]
+                                        c1_pred = predictions[2]
+                                        d1_pred = predictions[3]
+                                        xmin,xmax,ymin,ymax=convert(width,height,a1_pred,b1_pred,c1_pred,d1_pred)
+                                        start_point = (xmin, ymin)
+                                        end_point = (xmax, ymax)
+                                        rect1=xmax-xmin
+                                        rect2=ymax-ymin
+                                        check_rect=rect2/rect1
+                                    else:
+                                        print("not predict")
 
 
                       ##############
